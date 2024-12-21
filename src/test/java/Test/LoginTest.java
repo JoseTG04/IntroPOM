@@ -16,4 +16,17 @@ public class LoginTest extends BaseTest {
         SecurePage securePage = new SecurePage(driver);
         securePage.clickButtonLogout();
     }
+
+    @Test
+    public void testInvalidLogin(){
+        loginPage.setNameInput("tomsmith");
+        loginPage.setPasswordInput("123456");
+        loginPage.clickButtonLogin();
+
+        System.out.println(loginPage.getErrorMessage());
+        String errorMessage = loginPage.getErrorMessage();
+        Assert.assertTrue(errorMessage.contains("Your password"));
+//        Assert.assertTrue(errorMessage.contains("Your username"));
+
+    }
 }

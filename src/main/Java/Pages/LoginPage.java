@@ -15,7 +15,7 @@ public class LoginPage {
     private By nameInput = By.id("username");
     private By passwordInput = By.id("password");
     private By loginButton = By.cssSelector("button[type='submit']");
-
+    private By errorMessage = By.id("flash");
     // Actions
     public By getNameInput() {
         return nameInput;
@@ -33,9 +33,8 @@ public class LoginPage {
         driver.findElement(loginButton).click();
     }
 
-
-
-
-
+    public String getErrorMessage() {
+        return driver.findElement(errorMessage).getText();
+    }
 
 }
